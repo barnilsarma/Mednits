@@ -22,4 +22,4 @@
   <li>Integration of google maps API so as to facilitate searching of nearby hospitals efficiently</li>
   <li>Multiple website themes (eg:light theme, dark theme etc)</li>
 </p>
-The project has been deployed <a href="https://mednits.onrender.com/">Here</a>
+The project has been deployed <a href="https://mednits.onrender.com/" target="_blank">Here</a>
