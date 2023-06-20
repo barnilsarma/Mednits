@@ -1,0 +1,375 @@
+<html>
+    <head>
+        <title>Mednits | My Cart</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100&family=Quicksand:wght@300&family=Roboto+Condensed&display=swap" rel="stylesheet">
+        <style>
+            :root{
+                --color1:#15093f;
+                --color2:#0059ff;
+                --color3:#6800ca;
+                --color4:#ffffff;
+                --color5:#685e70;
+                --searchBg:rgba(100,100,100,0.2);
+            }
+            *{
+                margin:0;
+            }
+            .logo-img{
+                position: relative;
+                top:0cm;
+                left:10%;
+                height:1.4cm;
+                width:1.4cm;
+            }
+            .cart{
+                height:0.7cm;
+                width:0.7cm;
+            }
+            nav{
+                position: sticky;
+                top:0;
+                color: var(--color1);
+                display:flex;
+                flex-direction: row;
+                justify-content: space-around;
+                backdrop-filter: blur(4px);
+                font-family: 'Quicksand', sans-serif;
+                font-weight: 800;
+                z-index:2;
+            }
+            nav .nav-inner-extremes{
+                width:10vw;
+                padding-top:0.5cm;
+                padding-bottom:0.5cm;
+                display:flex;
+                flex-direction: row;
+                align-items:normal;
+                transition-duration: 1s;
+            }
+            nav .nav-inner-extremes a,.nav-inner-mid a{
+                background-color:transparent;
+                color:var(--color1);
+                padding:20px 10px 20px 10px;
+                border-radius:10px;
+                transition-duration: 1s;
+                text-decoration: none;
+                cursor:pointer;
+            }
+            nav .nav-inner-extremes a:hover,.nav-inner-mid a:hover{
+                background-color:var(--color2) ;
+                color:var(--color4);
+                transition-duration: 1s;
+            }
+            nav .nav-inner-mid{
+                width:80vw;
+                display:flex;
+                flex-direction: row;
+                justify-content: space-around;
+                word-spacing: 10px;
+                padding-top:0.5cm;
+                padding-bottom:0.5cm;
+                transition-duration: 1s;
+            }
+            #med-cont{
+                display:grid;
+                grid-template-columns: auto auto auto;
+                grid-template-rows: auto auto auto auto;
+                margin-bottom:3cm;
+                text-align: center;
+                z-index:0;
+            }
+            #med-cont .med{
+                position:relative;
+                top:0px;
+                left:0px;
+                padding:30px;
+                background-color: var(--color4);
+                border:0px solid transparent;
+                border-radius: 1cm;
+                box-shadow: -10px 10px 40px var(--color5);
+                margin:1cm;
+                font-family:'Quicksand',sans-serif;
+                display:flex;
+                flex-direction: column;
+                transition-duration: 1s;
+                z-index:1;
+            }
+            #med-cont .med:hover{
+                top:-10px;
+                left:10px;
+                transition-duration: 1s;
+                box-shadow: -20px 20px 50px var(--color5);
+            }
+            #med-cont .med h1{
+                color:var(--color3);
+            }
+            #med-cont .med h2{
+                font-family:'roboto condensed',sans-serif;
+                color:var(--color5);
+            }
+            #med-cont .med h3{
+                color:var(--color5);
+            }
+            #med-cont .med-inner{
+                display:flex;
+                flex-direction: row;
+                justify-content: space-around;
+            }
+            #med-cont .med-img{
+                height:2cm;
+                width:2cm;
+            }
+            #med-cont .med form{
+                display: flex;
+                flex-direction: row;
+            }
+            #med-cont .med .qty{
+                border:0px solid transparent;
+                border-bottom:1px solid var(--color1);
+                background-color:transparent;
+                color:var(--color1);
+                font-size:small;
+                outline: 0px;
+                padding:10px;
+                text-align: center;
+            }
+            #med-cont .med .qty::placeholder{
+                color:var(--color5);
+                font-size:small;
+            }
+            #med-cont .med .cartBtn{
+                height:1cm;
+                background-color: var(--color2);
+                color: var(--color4);
+                border:0px solid transparent;
+                border-radius: 0.5cm;
+                padding-left: 10px;
+                padding-right: 10px;
+                transition-duration: 1s;
+            }
+            #med-cont .med .cartBtn:hover{
+                background-color: var(--color1);
+                transition-duration: 1s;
+            }
+            #address_form{
+                text-align: center;
+            }
+            #address_form input{
+                width:50%;
+                background-color: var(--color2);
+                color:var(--color4);
+                font-family: 'Geologica',sans-serif;
+                padding:1cm;
+                border:0px solid transparent;
+                border-radius:2.5cm;
+            }
+            footer{
+                border-top: 1px solid var(--color1);
+            }
+            footer #line1{
+                text-align: center;
+                font-family:'quicksand',sans-serif;
+                color:var(--color1);
+                font-weight:bolder;
+            }
+            footer #line2{
+                display:flex;
+                flex-direction: row;
+                justify-content: space-around;
+                width:100%;
+            }
+            footer #line2 a{
+                color:var(--color1);
+                text-decoration: none;
+            }
+            footer #line2 .col{
+                display:flex;
+                flex-direction: column;
+                align-items: center;
+                font-family: 'geologica',sans-serif;
+            }
+            footer #line2 .col .foot-opt{
+                margin:10px;
+                font-weight: bolder;
+            }
+            footer #line2 p{
+                width:30vw;
+                overflow: wrap;
+                text-align: center;
+                font-family: 'roboto condensed',sans-serif;
+                margin-top:40px;
+            }
+            .copyright{
+                font-family: 'quicksand',sans-serif;
+            }
+            @media screen and (max-width:600px){
+                nav{
+                    visibility:hidden;
+                }
+                
+                #mobile-nav{
+                    position:sticky;
+                    top:0;
+                    visibility: visible;
+                    display:flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    backdrop-filter: blur(5px);
+
+                }
+                #mobile-nav .mobile-nav-inner{
+                    width:50%;
+                }
+                #mobile-nav .mobile-nav-inner #nav-mobile-btn{
+                    margin-left:60%;
+                }
+                #mobile-menu{
+                    position:absolute;
+                    top:3cm;
+                    left:10%;
+                    visibility: hidden;
+                    display:flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    background-color: var(--searchBg);
+                    backdrop-filter: blur(2px);
+                    width:70%;
+                    height:10cm;
+                    text-align: center;
+                    padding: 1cm;
+                    z-index:3;
+                    border:0px solid transparent;
+                    border-radius:5px;
+                }
+                #mobile-menu a{
+                    color:var(--color1);
+                    text-decoration:none;
+                    font-family: 'quicksand',sans-serif;
+                    font-weight: bolder;
+                    padding:20px 10px 20px 10px;
+                    border-radius:10px;
+                    transition-duration: 1s;
+                }
+                #mobile-menu a:hover{
+                    background-color: var(--color2);
+                    color:var(--color4);
+                    transition-duration: 1s;
+                }
+                .search-wrapper{
+                    left:10%;
+                    width:80%;
+                }
+                #med-cont{
+                    display:flex;
+                    flex-direction: column;
+                    margin-bottom:3cm;
+                    text-align: center;
+                    z-index:0;
+                }
+                footer #line2{
+                    flex-direction: column;
+                }
+                .form-cont form input,textarea{
+                    width:75%;
+                }
+                .form-cont form h1{
+                    width:80%;
+                    margin-left: 10%;
+                    margin-right:10%;
+                }
+                footer{
+                    width:80%;
+                    margin-left: 10%;
+                    margin-right: 10%;
+                    padding-top:1cm;
+                }
+                footer p{
+                    text-align: center;
+                    margin-left:35%;
+                    margin-right:35%;
+                }
+            }
+        </style>
+        <script>
+            nav_state=0;
+            function nav(){
+                if(nav_state==0){
+                    document.getElementById("nav-mobile-btn").src="../static/nav-btn-close.svg";
+                    document.getElementById("mobile-menu").style.position="sticky";
+                    document.getElementById("mobile-menu").style.visibility="visible";
+                    nav_state=1;
+                }
+                else if(nav_state==1){
+                    document.getElementById("nav-mobile-btn").src="../static/nav-btn-open.svg";
+                    document.getElementById("mobile-menu").style.position="absolute";
+                    document.getElementById("mobile-menu").style.visibility="hidden";
+                    nav_state=0;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <nav>
+            <div class="nav-inner-extremes"><img src="../static/logo.svg" alt="logo" class="logo-img"></div>
+            <div class="nav-inner-mid">
+                <a class="nav-opt" id="home" role="button" href="/">HOME</a>
+                <a class="nav-opt" id="order" role="button" href="/order">ORDER MEDICINES</a>
+                <a class="nav-opt" id="hospitals" role="button" href="/hospitals">HOSPITALS</a>
+            </div>
+            <div class="nav-inner-extremes"><div><img src="../static/cart.svg" class="cart" alt="cart"><a class="nav-opt" id="my-cart" role="button" href="/cart">MY CART</a></div></div>
+        </nav>
+        <div id="mobile-nav">
+            <div class="mobile-nav-inner"><img src="../static/logo.svg" alt="logo" class="logo-img"></div>
+            <div class="mobile-nav-inner"><img src="../static/nav-btn-open.svg" alt="nav-button" class="logo-img" onClick="nav()" id="nav-mobile-btn"></div>
+        </div>
+        <div id="mobile-menu">
+            <a class="nav-opt" id="home" role="button" href="/">HOME</a>
+            <a class="nav-opt" id="order" role="button" href="/order">ORDER MEDICINES</a>
+            <a class="nav-opt" id="hospitals" role="button" href="/hospitals">HOSPITALS</a>
+            <div class="nav-inner-extremes"><div><img src="../static/cart.svg" class="cart" alt="cart"><a class="nav-opt" id="my-cart" role="button" href="/cart">MY CART</a></div>
+        </div>
+        </div>
+        <div id="med-cont">
+            {% for data in cart %}
+            <div class="med">
+                <div class="med-inner">
+                    <div class="med-details">
+                        <h1>{{data.Name}}</h1>
+                        <h2>{{data.For}}</h2>
+                        <h3>&#8377 {{data.cost}}</h3>
+                    </div>
+                    <img src={{data.img}} class="med-img">
+                </div>
+                <form method="post" target="_self" action="/added/{{data.Id}}">
+                    <input type="number" value={{data.qty}} placeholder="Enter Quantity" class="qty" id="qty" min="1" name="qty">
+                    <input type="submit" value={{data.status}} name="addCart" class="cartBtn">
+                </form>
+            </div>
+            {% endfor%}
+        </div>
+        <form id="address_form" action="/address">
+            <input type="submit" value="PLACE YOUR ORDER" name="place_order" id="place_order">
+        </form>
+        <footer>
+            <div id="line1">MEDNITS</div>
+            <div id="line2">
+                <div class="col">
+                    <a class="foot-opt" href="../#questionarre">ABOUT</a>
+                    <a class="foot-opt" href="../#form-cont">SUPPORT</a>
+                    <a class="foot-opt" href="../#testimonials">REVIEWS</a>
+                </div>
+                <div class="col">
+                    <div class="foot-opt"><img><div>+91 88220-85xxx</div></div>
+                    <div class="foot-opt"><img><div>example@gmail.com</div></div>
+                </div>
+                <p>
+                    Expert, compassionate care for your health and wellness needs. Trust us for life-changing healthcare.
+                </p>
+            </div>
+            <p align="center" class="copyright">&copy Copyright @Barnil Sarma 2023</p>
+        </footer>
+    </body>
+</html>
